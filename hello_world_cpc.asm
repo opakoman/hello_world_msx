@@ -15,10 +15,4 @@ PrintString:
     call PrintChar
     jr PrintString
 
-Message: db 'Hello World 323!',255
-
-NewLine:
-    ld a,13        ;Carriage return
-    call PrintChar
-    ld a,10        ;Line Feed
-    jp PrintChar
+Message: db 'Hello World!',255
