@@ -11,9 +11,9 @@ FORCLR equ 0f3e9h ; Foreground colour
 ; DIRECTIVAS PARA EL ENSAMBLADOR ( asMSX )
 ;---------------------------------------------------------
 .bios ; Definir Nombres de las llamadas a la BIOS
-.page 2 ; Definir la direcciÛn del cÛdigo ir· en 8000h
+.page 2 ; Definir la direcci√≥n del c√≥digo ir√° en 8000h
 .rom ; esto es para indicar que crearemos una ROM
-.start INICIO ; Inicio del CÛdigo de nuestro Programa
+.start INICIO ; Inicio del C√≥digo de nuestro Programa
 ;---------------------------------------------------------
 INICIO:
 ; INICIO DEL PROGRAMA
@@ -40,8 +40,8 @@ call INITXT ; set SCREEN 0
 ; call INIGRP ; set SCREEN 2
 ; SCREEN 0 : texto de 40 x 24 con 2 colores
 ; SCREEN 1 : texto de 32 x 24 con 16 colores
-; SCREEN 2 : gr·ficos de 256 x 192 con 16 colores
-; SCREEN 3 : gr·ficos de 64 x 48 con 16 colores
+; SCREEN 2 : gr√°ficos de 256 x 192 con 16 colores
+; SCREEN 3 : gr√°ficos de 64 x 48 con 16 colores
 ;
 ret
 ;---------------------------------------------------------
@@ -52,16 +52,16 @@ IMPRI_MENSAJE:
 ;
 ld h,01 ; situamos la Columna
 ld l,01 ; y la Fila donde escribir en la pantalla
-; ld hl,0101h ; tambiÈn podemos hacerlo de esta manera
+; ld hl,0101h ; tambi√©n podemos hacerlo de esta manera
 call POSIT ; BIOS fijar el cursor donde empezara a escribir
 ld hl,texto ; ponemos HL apuntando al texto del mensaje
 @@bucle:
-ld a,[hl] ; leemos el primer car·cter y lo metemos en A
+ld a,[hl] ; leemos el primer car√°cter y lo metemos en A
 or a ; comprobamos si hemos llegado al final del texto
 ret z ; salimos de la rutina en el caso de que sea un cero
-call CHPUT ; escribimos ese car·cter en la posiciÛn del cursor
+call CHPUT ; escribimos ese car√°cter en la posici√≥n del cursor
 inc hl ; incrementamos HL para que apunte a la siguiente letra
 jr @@bucle ; como no hemos llegado al final continuamos escribiendo
 ;---------------------------------------------------------
 texto:
-.db "Hola Mundo",0
+.db "Hello world",0
